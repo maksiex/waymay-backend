@@ -1,0 +1,42 @@
+# bin
+/target/
+**/*.rs.bk
+
+# artefacts
+Cargo.lock
+
+# ide
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# environment
+.env
+.env.*
+
+# Docker
+docker-compose.override.yml
+
+# logs
+*.log
+*.tmp
+*.bak
+
+# sql
+sqlx-data.json
+
+# mac
+.DS_Store
+
+# redis
+dump.rdb
+
+# system
+*.service
+*.socket
+
+# certs
+certs/
+*.pem
+*.key
