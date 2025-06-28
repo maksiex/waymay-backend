@@ -4,3 +4,26 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+# server
+axum = { version = "0.8.4", features = ["macros"]}
+tokio = { version = "1.45.1", features = ["full"]}
+#sql
+sqlx = { version = "0.8.6", features = [
+    "postgres",
+    "runtime-tokio",
+    "tls-native-tls",
+    "macros",
+    "uuid",
+    "time",
+    "chrono",
+]}
+#serde
+serde = { version = "1.0.219", features = ["derive"]}
+time = { version = "0.3", features = ["serde"] }
+
+serde_json = "1.0.140"
+#env
+dotenvy = "0.15.7"
+uuid = { version = "1", features = ["v4", "serde"]}
+chrono = { version = "0.4", features = ["serde"]}
+argon2 = "0.5.3"
