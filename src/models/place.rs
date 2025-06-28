@@ -1,6 +1,6 @@
 
-
-#[derive(Debug, Deserialize)]
+use serde::Deserialize;
+#[derive(Debug, Deserialize, serde::Serialize)]
 pub struct Place {
     pub name: String,
     pub latitude: f32,
