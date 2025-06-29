@@ -11,10 +11,6 @@ Cargo.lock
 *.swp
 *.swo
 
-# environment
-.env
-.env.*
-
 # Docker
 docker-compose.override.yml
 
@@ -40,3 +36,6 @@ dump.rdb
 certs/
 *.pem
 *.key
+
+.env
+.env.*
