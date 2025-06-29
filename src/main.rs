@@ -1,5 +1,5 @@
 use axum:: {
-    routing::{get, post, patch},
+    routing::{get},
     Router,
 };
 use sqlx::{postgres::PgPoolOptions};
@@ -11,10 +11,9 @@ mod auth;
 mod constants;
 mod models;
 mod place;
-
+use auth::routes as auth_routes;
+use place::routes as place_routes;
 use constants::errors::{ENV_LOAD_ERROR, DB_CONNECTION_ERROR};
-use crate::auth::handlers::{reg, login};
-use crate::place::handlers::get_city_info;
 
 #[tokio::main(flavor = "multi_thread", worker_threads = 4)]
 async fn main() {
@@ -38,12 +37,10 @@ async fn main() {
     println!("Listening on {}", listener.local_addr().unwrap());
     
     let app = Router::new()
-        .route("/", get(|| async {"Hello from router"}))
-        .route("/reg", post(reg))
-        .route("/login", patch(login))
-        .route("/place", get(get_city_info))
-        .layer(cors)
-        .with_state(db_pool);
+        .route("/", get(|| async {"test route"}))
+        .merge(auth_routes::router(db_pool.clone()))
+        .merge(place_routes::router(db_pool.clone()))
+        .layer(cors);
     
     axum::serve(listener, app) 
     .await
